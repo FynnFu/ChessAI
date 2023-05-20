@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <main role="main" class="container-md-md">
+      <div class="row">
+        <div class="col-md-8">
+    <div class="content-section">
+      </div>
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+
+                    <div class="media-body">
+                        <p class="text-secondary">Username: {{ user_form.username }}</p>
+                    </div>
+                    <div class="media-body">
+                        <p class="text-secondary">First name: {{ user_form.first_name }}</p>
+                    </div>
+                    <div class="media-body">
+                        <p class="text-secondary">Last name: {{ user_form.last_name }}</p>
+                    </div>
+                    <div class="media-body">
+                        <p class="text-secondary">Email address: {{ user_form.email }}</p>
+                    </div>
+                    <div class="media">
+                        <p class="text-secondary">Photo:
+                            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="100px" height="100px">
+                        </p>
+                    </div>
+                    <label for="{{ profile_form.image.id_for_label }}" class="form-label">Загрузить фото:</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            {{ profile_form.image }}
+                            <label class="custom-file-label" for="{{ profile_form.image.id_for_label }}">Выбрать файл</label>
+                        </div>
+                    </div>
+                    <script>
+                        const input = document.querySelector('#id_image');
+                        const label = document.querySelector('.custom-file-label');
+                        input.addEventListener('change', () => {
+                            const fileName = input.value.split('\\').pop();
+                            label.textContent = fileName;
+                        });
+                    </script>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+      <!-- Здесь будет форма -->
+    </div>
+      </div>
+    </main>
+{% endblock content %}

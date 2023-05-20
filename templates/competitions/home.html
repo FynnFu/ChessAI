@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load qr_code %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<!-- Masthead-->
+<main role="main" class="container-md-md container-home">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-section">
+                <div class="half">
+                    <div class="qr-code">
+                        <!-- Здесь будет QR-код -->
+                        {% qr_from_text host size="m" image_format="png" error_correction="L" %}
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="form">
+                        <h2>Создать турнир</h2>
+                        <input type="text" placeholder="Название">
+                        <input type="password" placeholder="Пароль">
+                        <button>Создать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
