@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load qr_code %}
+{% block title %}Add Tournament{% endblock %}
+{% block content %}
+<!-- Masthead-->
+<header class="container-home container-md-md bg-primary text-black text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Создать турнир</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+            <label for="{{ form.name.id_for_label }}">Название:</label>
+            {{ form.name }}
+                {% if form.name.errors %}
+                    <ul class="error">
+                        {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </p>
+            <p>
+            <label for="{{ form.password.id_for_label }}">Пароль:</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <ul class="error">
+                    {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </p>
+            <p>
+            <label for="{{ form.type.id_for_label }}">Тип:</label>
+            {{ form.type }}
+            {% if form.type.errors %}
+                <ul class="error">
+                    {% for error in form.type.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.data.errors %}
+                <ul class="error">
+                    {% for error in form.data.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </p>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+</header>
+{% endblock content %}

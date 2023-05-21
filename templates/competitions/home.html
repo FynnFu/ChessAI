@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load qr_code %}
-{% block title %}Profile{% endblock %}
+{% block title %}Home{% endblock %}
 {% block content %}
 <!-- Masthead-->
 <main role="main" class="container-md-md container-home">
@@ -14,12 +14,7 @@
                     </div>
                 </div>
                 <div class="half">
-                    <div class="form">
-                        <h2>Создать турнир</h2>
-                        <input type="text" placeholder="Название">
-                        <input type="password" placeholder="Пароль">
-                        <button>Создать</button>
-                    </div>
+                    <a href="{% url 'add-tournament' %}">Создать турнир</a>
                 </div>
             </div>
         </div>

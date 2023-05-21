@@ -1,4 +1,9 @@
+import json
+import os
+
 from django.db import models
+
+from ChessAI import settings
 
 
 # Create your models here.
@@ -22,7 +27,7 @@ class TournamentModel(models.Model):
     # Тип соревнования
     type = models.ForeignKey(TournamentFormsModel, on_delete=models.CASCADE)
     # Файл с результатами
-    data = models.FileField(upload_to='game_saves/')
+    data = models.FileField(upload_to='game_saves/', null=True)
     # Создаст дату и время при создании объекта
     date_add = models.DateTimeField(auto_now_add=True)
     # Создаст дату и время при изменении объекта
@@ -30,3 +35,4 @@ class TournamentModel(models.Model):
 
     def __str__(self):
         return self.name
+
