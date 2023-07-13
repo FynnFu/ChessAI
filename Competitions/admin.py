@@ -11,7 +11,7 @@ class TournamentFormsModelAdmin(admin.ModelAdmin):
 
 @admin.register(TournamentModel)
 class TournamentModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type', 'date_add', 'date_change')
+    list_display = ('name', 'type', 'data', 'date_add', 'date_change')
     list_filter = ('type',)  # Фильтр по полю 'type'
     search_fields = ('name',)  # Поиск по полю 'name'
     readonly_fields = ('date_add', 'date_change')  # Поля только для чтения

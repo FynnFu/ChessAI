@@ -20,6 +20,8 @@ class TournamentFormsModel(models.Model):
 
 
 class TournamentModel(models.Model):
+    # id
+    id = models.AutoField(primary_key=True)
     # Название соревнования
     name = models.CharField(max_length=100)
     # Пароль для изменения
@@ -27,7 +29,11 @@ class TournamentModel(models.Model):
     # Тип соревнования
     type = models.ForeignKey(TournamentFormsModel, on_delete=models.CASCADE)
     # Файл с результатами
-    data = models.FileField(upload_to='game_saves/', null=True)
+    data = models.FileField(upload_to='game_saves/', default='game_saves/default.json')
+    # Подключение игроков
+    connecting_players = models.BooleanField(default=True)
+    # Открытая группа
+    open = models.BooleanField(default=False)
     # Создаст дату и время при создании объекта
     date_add = models.DateTimeField(auto_now_add=True)
     # Создаст дату и время при изменении объекта

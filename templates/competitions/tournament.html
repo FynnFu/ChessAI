@@ -6,6 +6,7 @@
 <main role="main" class="container-md-md container-home">
     <div class="row">
         <div class="col-md-8">
+            {% if tournament.connecting_players %}
             <div class="content-section">
                 <div class="half">
                     <div class="qr-code">
@@ -14,9 +15,12 @@
                     </div>
                 </div>
                 <div class="half">
-                    <a href="{% url 'add_tournament' %}">Создать турнир</a>
+                    {{ tournament.id }}
+                    {{ tournament.name }}
+                    {{ tournament.password }}
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 </main>

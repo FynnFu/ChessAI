@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load qr_code %}
+{% block title %}Add Tournament{% endblock %}
+{% block content %}
+<!-- Masthead-->
+<header class="container-home container-md-md bg-primary text-black text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Присоединиться к турниру</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Название: </label>
+            <button type="submit">Присоединиться</button>
+        </form>
+    </div>
+</header>
+{% endblock content %}

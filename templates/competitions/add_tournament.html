@@ -18,6 +18,11 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
+                {% if error %}
+                    <ul class="error">
+                        <li>{{ error }}</li>
+                    </ul>
+                {% endif %}
             </p>
             <p>
             <label for="{{ form.password.id_for_label }}">Пароль:</label>
@@ -25,6 +30,28 @@
             {% if form.password.errors %}
                 <ul class="error">
                     {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </p>
+            <p>
+            <label for="{{ form.connecting_players.id_for_label }}">Подключение игроков/команд: </label>
+            {{ form.connecting_players }}
+            {% if form.connecting_players.errors %}
+                <ul class="error">
+                    {% for error in form.connecting_players.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </p>
+            <p>
+            <label for="{{ form.open.id_for_label }}">Открытая группа:</label>
+            {{ form.open }}
+            {% if form.open.errors %}
+                <ul class="error">
+                    {% for error in form.open.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
@@ -40,15 +67,8 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            {% if form.data.errors %}
-                <ul class="error">
-                    {% for error in form.data.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
             </p>
-            <button type="submit">Добавить</button>
+            <button type="submit">Создать</button>
         </form>
     </div>
 </header>
